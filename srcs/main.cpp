@@ -15,5 +15,5 @@
 int	main(void) {
 	Maze aleatorio(10, 20);
 
-	std::cout << aleatorio;
+	std::cout << aleatorio << "\tTesting pull request" << std::endl;
 }
