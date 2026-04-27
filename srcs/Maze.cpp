@@ -6,7 +6,7 @@
 /*   By: afogonca <afogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 14:38:48 by afogonca          #+#    #+#             */
-/*   Updated: 2026/04/27 14:29:39 by afogonca         ###   ########.fr       */
+/*   Updated: 2026/04/27 14:44:30 by afogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ Maze::~Maze(void) {
 };
 
 void	Maze::loop(void) {
-	while (_win.get_window()) {
-		SDL_Event event;
+	SDL_Event event;
+	bool quit = false;
+
+	while (!quit) {
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT) {
-				SDL_DestroyWindow(_win.get_window());
-				SDL_Quit();
-				return ;
+				quit = true;
 			}
 		}
 	}
