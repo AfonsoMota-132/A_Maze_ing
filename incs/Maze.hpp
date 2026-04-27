@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Maze.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afogonca <afogonca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: afogonca <afogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 14:28:38 by afogonca          #+#    #+#             */
-/*   Updated: 2026/04/17 15:18:31 by afogonca         ###   ########.fr       */
+/*   Updated: 2026/04/27 14:37:39 by afogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <cstdint>
 #include <vector>
+#include "Window.hpp"
 
 class Maze {
 private:
@@ -26,6 +27,7 @@ private:
 	std::string	_out_file;
 	bool		_perfect;
 	std::vector<int8_t>	*_maze;
+	Window _win;
 public:
 	Maze(size_t width = 10, size_t height = 10,
 		std::pair<size_t, size_t> entry = std::pair<size_t, size_t>(0, 0),
@@ -42,6 +44,7 @@ public:
 	size_t	get_height(void) { return _height; };
 	size_t	get_width(void) const { return _width; };
 	size_t	get_height(void) const { return _height; };
+	void	loop(void);
 };
 
 std::ostream &operator<<(std::ostream &out, const Maze &maze);

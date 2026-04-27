@@ -1,30 +1,15 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: afogonca <afogonca@student.42porto.com>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/20 15:20:40 by afogonca          #+#    #+#              #
-#    Updated: 2024/12/20 15:27:31 by afogonca         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = a_maze_ing
 CXX = c++
-# CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -I$(HOME)/.local/include -Iincs
+SDLFLAGS = -L$(HOME)/.local/lib -lSDL2 -lSDL2_image -Wl,-rpath,$(HOME)/.local/lib
 OBJS = $(SRCS:.cpp=.o)
-
-SRCS = $(addprefix srcs/, main.cpp Maze.cpp)
+SRCS = $(addprefix srcs/, main.cpp Maze.cpp Window.cpp)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) $(SDLFLAGS)
 
-gdb:
-	$(CXX) $(CXXFLAGS) $(SRCS) -o gdb -g
 clean:
 	rm -f $(OBJS)
 
