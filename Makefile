@@ -1,14 +1,15 @@
 NAME = a_maze_ing
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -I$(HOME)/.local/include -Iincs
-SDLFLAGS = -L$(HOME)/.local/lib -lSDL2 -lSDL2_image -Wl,-rpath,$(HOME)/.local/lib
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11	-fsanitize=leak -g
+GLFLAGS = -lGL -lGLU -lglfw
+
 OBJS = $(SRCS:.cpp=.o)
-SRCS = $(addprefix srcs/, main.cpp Maze.cpp Window.cpp)
+SRCS = $(addprefix srcs/, main.cpp)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) $(SDLFLAGS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME) $(GLFLAGS)
 
 clean:
 	rm -f $(OBJS)
